@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/vtfk/azf-send-sms.svg?branch=master)](https://travis-ci.com/vtfk/azf-send-sms)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
 # azf-send-sms
 
 HttpTriggered sending of SMS with [PSWinCom/LinkMobility](https://pswin.com/)
