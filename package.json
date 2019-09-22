@@ -1,0 +1,34 @@
+{
+  "name": "azf-send-sms",
+  "version": "1.0.0",
+  "description": "HttpTriggered SMS sending with PSWincom",
+  "keywords": [
+    "azure",
+    "sms",
+    "pswincom"
+  ],
+  "homepage": "https://github.com/vtfk/azf-send-sms#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtfk/azf-send-sms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vtfk/azf-send-sms/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mats Andreassen",
+    "email": "mats.andreassen@vtfk.no",
+    "url": "https://github.com/MatsAnd"
+  },
+  "main": "SendSMS/index.js",
+  "scripts": {
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "pswincom-gateway": "^1.4.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}
