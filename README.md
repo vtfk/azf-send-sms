@@ -7,7 +7,7 @@ HttpTriggered sending of SMS with [PSWinCom/LinkMobility](https://pswin.com/)
 POST json to function.
 
 
-```json
+```javascript
 {
   "receivers": ["4798765432", "4745678912"], // Required - must have country codes prefixed!
   "message": "<message>", // Required
@@ -38,7 +38,7 @@ The easiest way to make this function run is to setup an app service, configure 
   - Runtime stack -> Node
 
 Configuration for app (Application settings):
-```json
+```javascript
 {
   "PSWIN_USERNAME": "username",
   "PSWIN_PASSWORD": "password",
@@ -56,7 +56,7 @@ Configuration for app (Application settings):
 1. First - install all tools needed for [local development](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-local).
 2. Clone the repo. Install dependencies.
 3. Create a local.settings.json file:
-    ```json
+    ```javascript
     {
       "IsEncrypted": false,
       "Values": {
