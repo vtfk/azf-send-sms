@@ -69,10 +69,9 @@ Configuration for app (Application settings):
     ```
 
 4. Start server:
-
-```
-$ func start
-```
+    ```
+    $ func start
+    ```
 
 POST testdata
 
