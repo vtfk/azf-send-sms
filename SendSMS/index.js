@@ -4,11 +4,12 @@ module.exports = async function (context, request) {
   const data = request.body
 
   // Verify that input data is present and correct
-  if(!(data && data.receivers && Array.isArray(data.receivers) && data.message)) {
-    return context.res = {
+  if (!(data && data.receivers && Array.isArray(data.receivers) && data.message)) {
+    context.res = {
       status: 400,
       body: 'Please see usage here: https://github.com/vtfk/azf-send-sms'
     }
+    return
   }
 
   try {
@@ -27,7 +28,7 @@ module.exports = async function (context, request) {
 
     context.res = {
       status: 500,
-      body: "Something happened! " + error.message
+      body: 'Something happened! ' + error.message
     }
   }
 }
