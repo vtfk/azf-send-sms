@@ -1,13 +1,18 @@
 const sendSms = require('../lib/send-sms')
+const validateJson = require('../lib/validate-sms-json')
 
 module.exports = async function (context, request) {
   const data = request.body
 
   // Verify that input data is present and correct
-  if (!(data && data.receivers && Array.isArray(data.receivers) && data.message)) {
+  const validation = validateJson(data)
+  if (validation && validation.errors) {
     context.res = {
       status: 400,
-      body: 'Please see usage here: https://github.com/vtfk/azf-send-sms'
+      body: {
+        message: 'One or more field has invalid data, please see usage here: https://github.com/vtfk/azf-send-sms',
+        errors: validation.errors
+      }
     }
     return
   }

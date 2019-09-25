@@ -30,6 +30,7 @@
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
   "dependencies": {
+    "ajv": "^6.10.2",
     "pswincom-gateway": "^1.4.0"
   },
   "devDependencies": {

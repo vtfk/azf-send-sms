@@ -1,0 +1,59 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sms.schema.json",
+  "type": "object",
+  "title": "SMS schema",
+  "required": [
+    "receivers",
+    "message"
+  ],
+  "properties": {
+    "receivers": {
+      "$id": "#/properties/receivers",
+      "type": "array",
+      "title": "SMS receivers",
+      "default": null,
+      "minItems": 1,
+      "items": {
+        "$id": "#/properties/receivers/items",
+        "type": "string",
+        "title": "Mobile number",
+        "default": "",
+        "examples": [
+          "4798765432"
+        ],
+        "pattern": "^\\d{10}$",
+        "format": "regex"
+      }
+    },
+    "message": {
+      "$id": "#/properties/message",
+      "type": "string",
+      "title": "SMS message",
+      "default": "",
+      "examples": [
+        "Hello World!"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "sender": {
+      "$id": "#/properties/sender",
+      "type": "string",
+      "title": "Sender name",
+      "default": "",
+      "examples": [
+        "VTFK"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "operation": {
+      "$id": "#/properties/operation",
+      "type": "integer",
+      "title": "PSWinCom operation",
+      "examples": [
+        9
+      ]
+    }
+  }
+}
