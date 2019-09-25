@@ -23,8 +23,7 @@
   },
   "main": "SendSMS/index.js",
   "scripts": {
-    "test": "standard && npm audit --production && ava",
-    "test-offline": "standard && ava",
+    "test": "standard && ava",
     "coverage": "nyc ava",
     "standard-fix": "standard --fix",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
