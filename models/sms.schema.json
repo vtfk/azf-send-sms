@@ -31,11 +31,10 @@
       "$id": "#/properties/message",
       "type": "string",
       "title": "SMS message",
-      "default": "",
       "examples": [
         "Hello World!"
       ],
-      "pattern": "^(.*)$"
+      "minLength": 1
     },
     "sender": {
       "$id": "#/properties/sender",
