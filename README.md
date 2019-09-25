@@ -12,7 +12,7 @@ POST json to function.
 
 ```javascript
 {
-  "receivers": ["4798765432", "4745678912"], // Required - must have country codes prefixed!
+  "receivers": ["4798765432", "4745678912"], // Required (10 digits) - must have country codes prefixed!
   "message": "<message>", // Required
   "sender": "<name-or-number>", // Optional
   "operation": 9 // Optional
