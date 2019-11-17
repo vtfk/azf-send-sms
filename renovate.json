@@ -1,11 +1,5 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "devDependencies": {
-    "automerge": true
-  },
-  "assignees": [
-    "MatsAnd"
+    "github>vtfk/renovate-config"
   ]
 }
