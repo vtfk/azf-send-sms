@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "ava": "3.6.0",
-    "husky": "4.2.3",
+    "husky": "4.2.4",
     "nyc": "15.0.1",
     "standard": "14.3.3"
   },
