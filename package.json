@@ -33,7 +33,7 @@
     "pswincom-gateway": "^1.4.0"
   },
   "devDependencies": {
-    "ava": "3.7.0",
+    "ava": "3.7.1",
     "husky": "4.2.5",
     "nyc": "15.0.1",
     "standard": "14.3.3"
