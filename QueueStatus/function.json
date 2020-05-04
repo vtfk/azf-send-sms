@@ -5,7 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "sms/{correlationId}",
+      "route": "sms/{correlationId:guid}",
       "methods": [ "get" ]
     },
     {
