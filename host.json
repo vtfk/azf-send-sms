@@ -6,7 +6,7 @@
   },
   "extensions": {
     "queues": {
-      "maxPollingInterval": "00:00:10",
+      "maxPollingInterval": "00:00:05",
       "visibilityTimeout" : "00:05:00",
       "batchSize": 16,
       "maxDequeueCount": 5,
