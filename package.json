@@ -1,6 +1,6 @@
 {
   "name": "azf-send-sms",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "HttpTriggered SMS sending with PSWincom",
   "keywords": [
     "azure",
