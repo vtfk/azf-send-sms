@@ -1,13 +1,39 @@
-module.exports = async function (context, req) {
-  context.log('JavaScript HTTP trigger function processed a request.')
+const sendSms = require('../lib/send-sms')
+const validateJson = require('../lib/validate-sms-json')
 
-  const name = (req.query.name || (req.body && req.body.name))
-  const responseMessage = name
-    ? 'Hello, ' + name + '. This HTTP triggered function executed successfully.'
-    : 'This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.'
+module.exports = async function (context, request) {
+  const data = request.body
 
-  context.res = {
-    // status: 200, /* Defaults to 200 */
-    body: responseMessage
+  // Verify that input data is present and correct
+  const validation = validateJson(data)
+  if (validation && validation.errors) {
+    context.res = {
+      status: 400,
+      body: {
+        message: 'One or more field has invalid data, please see usage here: https://github.com/vtfk/azf-send-sms',
+        errors: validation.errors
+      }
+    }
+    return
+  }
+
+  try {
+    context.bindings.queue = data
+    context.log('info', ['index', 'send', 'receivers', data.receivers, 'queued'])
+
+    context.res = {
+      status: 202,
+      body: 'Queued!',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  } catch (error) {
+    context.log.error('error', ['index', 'send', 'receivers', data.receivers, error])
+
+    context.res = {
+      status: 500,
+      body: 'Something happened! ' + error.message
+    }
   }
 }
