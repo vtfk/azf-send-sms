@@ -10,7 +10,7 @@ module.exports = async function (context, sms) {
 
   try {
     // Send SMS to PSWinCom
-    context.log('info', ['index', 'send', 'receivers', sms.receivers, 'sending message'])
+    context.log('info', ['index', 'send', 'receivers', sms.receivers, 'sending sms'])
     const result = await sendSms(context, sms)
 
     // Validate result from PsWinCom
@@ -18,7 +18,7 @@ module.exports = async function (context, sms) {
       throw result
     }
 
-    context.log('info', ['index', 'send', 'receivers', sms.receivers, 'message sent', result])
+    context.log('info', ['index', 'send', 'receivers', sms.receivers, 'sms sent', result])
     context.done(null, result)
   } catch (error) {
     context.log.error('error', ['index', 'send', 'receivers', sms.receivers, error])
