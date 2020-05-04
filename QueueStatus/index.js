@@ -1,15 +1,23 @@
-module.exports = async function (context, req) {
-  context.log('JavaScript HTTP trigger function processed a request.')
+const { acceptedRes, okRes, errorRes } = require('../lib/http-result')
 
-  if (req.query.name || (req.body && req.body.name)) {
-    context.res = {
-      // status: 200, /* Defaults to 200 */
-      body: 'Hello ' + (req.query.name || req.body.name)
-    }
+module.exports = async function (context, request) {
+  const correlationId = request.params.correlationId || request.headers.correlationId
+  if (!correlationId) {
+    context.log('error', ['status', 'no-correlation-id', request.params])
+    context.res = errorRes('No correlationId was passed in the url.. Weird.. How did you even get here?')
+    return
+  }
+
+  // Get data from blob storage
+  const blobData = context.bindings.storage
+
+  if (blobData) {
+    // Return returned blob data if set
+    context.res = okRes(blobData, correlationId)
+    context.log('info', ['status', correlationId, 'OK'])
   } else {
-    context.res = {
-      status: 400,
-      body: 'Please pass a name on the query string or in the request body'
-    }
+    // Check back in 10 seconds!
+    context.res = acceptedRes(request.originalUrl, 'Not finished yet, check back in a bit..', correlationId)
+    context.log('info', ['status', correlationId, 'Not finished yet..'])
   }
 }
