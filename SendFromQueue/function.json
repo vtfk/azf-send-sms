@@ -1,11 +1,11 @@
 {
   "bindings": [
     {
-      "name": "myQueueItem",
+      "name": "sms",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "js-queue-items",
-      "connection": ""
+      "queueName": "queue-sms",
+      "connection": "StorageConnectionString"
     }
   ]
 }
