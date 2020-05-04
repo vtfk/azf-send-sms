@@ -82,6 +82,7 @@ Publish
 *.cscfg
 *.Cache
 project.lock.json
+yarn.lock
 
 /packages
 /TestResults
