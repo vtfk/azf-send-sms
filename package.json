@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "ajv": "^6.10.2",
-    "pswincom-gateway": "^1.4.0"
+    "pswincom-gateway": "^1.4.0",
+    "uuid": "8.0.0"
   },
   "devDependencies": {
     "ava": "3.8.1",
