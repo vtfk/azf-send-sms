@@ -1,4 +1,3 @@
-const sendSms = require('../lib/send-sms')
 const validateJson = require('../lib/validate-sms-json')
 
 module.exports = async function (context, request) {
