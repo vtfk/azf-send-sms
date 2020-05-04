@@ -13,10 +13,10 @@ module.exports = async function (context, sms) {
 
   try {
     // Send SMS to PSWinCom
-    context.log('info', ['index', 'send', correlationId, 'receivers', sms.receivers, 'sending sms'])
+    context.log('info', ['send', correlationId, 'receivers', sms.receivers, 'sending sms'])
     const result = await sendSms(context, sms)
 
-    context.log('info', ['index', 'send', correlationId, 'receivers', sms.receivers, 'sms sent', result])
+    context.log('info', ['send', correlationId, 'receivers', sms.receivers, 'sms sent', result])
 
     // Validate result from PsWinCom
     if (result.login === 'FAIL' || (result.refs && Object.keys(result.refs).length < 1)) {
@@ -31,9 +31,9 @@ module.exports = async function (context, sms) {
       result
     }
 
-    context.log('info', ['index', 'send', correlationId, 'blob set'])
+    context.log('info', ['send', correlationId, 'blob set'])
   } catch (error) {
-    context.log.error('error', ['index', 'send', correlationId, 'receivers', sms.receivers, error])
+    context.log.error('error', ['send', correlationId, 'receivers', sms.receivers, error])
     context.done(error)
   }
 }

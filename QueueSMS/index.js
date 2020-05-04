@@ -21,13 +21,13 @@ module.exports = async function (context, request) {
   try {
     // Push the data into the queue
     context.bindings.queue = data
-    context.log('info', ['index', 'queue', correlationId, 'receivers', data.receivers, 'queued'])
+    context.log('info', ['queue', correlationId, 'receivers', data.receivers, 'queued'])
 
     // Build status URL and return 202
     const statusEndpoint = `https://${process.env.WEBSITE_HOSTNAME}/api/sms/${correlationId}`
     context.res = acceptedRes(statusEndpoint, `SMS added to Queue! Status: ${statusEndpoint}`, correlationId)
   } catch (error) {
-    context.log.error('error', ['index', 'queue', correlationId, 'receivers', data.receivers, error])
+    context.log.error('error', ['queue', correlationId, 'receivers', data.receivers, error])
     context.res = errorRes('Something happened!', error.message, correlationId)
   }
 }
