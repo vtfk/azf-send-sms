@@ -12,8 +12,6 @@ module.exports = async function (context, sms) {
     return context.done({ ...validation.errors, correlationId })
   }
 
-  context.log(JSON.stringify(context, null, 2))
-
   try {
     // Send SMS to PSWinCom
     context.log('info', ['poison-queue', correlationId, 'receivers', sms.receivers, 'sending sms'])
