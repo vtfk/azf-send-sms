@@ -16,12 +16,12 @@ module.exports = async function (context, sms) {
     context.log('info', ['send', correlationId, 'receivers', sms.receivers, 'sending sms'])
     const result = await sendSms(context, sms)
 
-    context.log('info', ['send', correlationId, 'receivers', sms.receivers, 'sms sent', result])
-
     // Validate result from PsWinCom
     if (result.login === 'FAIL' || (result.refs && Object.keys(result.refs).length < 1)) {
       throw result
     }
+
+    context.log('info', ['send', correlationId, 'receivers', sms.receivers, 'sms sent', result])
 
     // Export file to blob storage
     context.bindings.storage = {
