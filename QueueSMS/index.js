@@ -24,7 +24,7 @@ module.exports = async function (context, request) {
     context.log('info', ['queue', correlationId, 'receivers', data.receivers, 'queued'])
 
     // Build status URL and return 202
-    const statusEndpoint = `https://${process.env.WEBSITE_HOSTNAME}/api/sms/${correlationId}`
+    const statusEndpoint = `https://${process.env.WEBSITE_HOSTNAME}/sms/${correlationId}`
     context.res = acceptedRes(statusEndpoint, `SMS added to Queue! Status: ${statusEndpoint}`, correlationId, 1)
   } catch (error) {
     context.log.error('error', ['queue', correlationId, 'receivers', data.receivers, error])
