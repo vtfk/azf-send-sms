@@ -1,3 +1,3 @@
 module.exports = async function (context, req) {
-    context.res = { body: "Pong!" };
-};
+  context.res = { body: 'Pong!' }
+}
