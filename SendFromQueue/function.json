@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "name": "sms",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "queue-sms",
+      "connection": "StorageConnectionString"
+    },
+    {
+      "name": "storage",
+      "type": "blob",
+      "direction": "out",
+      "path": "sms/{correlationId}.json",
+      "connection": "StorageConnectionString"
+    }
+  ]
+}

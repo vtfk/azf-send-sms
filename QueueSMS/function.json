@@ -5,12 +5,20 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "sms",
       "methods": [ "post" ]
     },
     {
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "queue",
+      "queueName": "queue-sms",
+      "connection": "StorageConnectionString"
     }
   ]
 }

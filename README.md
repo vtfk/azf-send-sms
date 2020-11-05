@@ -8,6 +8,7 @@ HttpTriggered sending of SMS with [PSWinCom/LinkMobility](https://pswin.com/)
 # Usage
 
 POST json to function.
+The function will add the SMS to a storage queue and send it as soon as possible.
 
 
 ```javascript
@@ -23,6 +24,10 @@ POST json to function.
 $ curl https://azf-send-sms.azurewebsites.net/ -d "{ "receivers": ["4745678912"], "message": "Do you read me?" }" -H "Content-Type: application/json" -v
 ```
 
+Returns a status URL that the SMS status can be pulled from. If the SMS failed sending, the status endpoint can tell you that as well.
+
+
+
 ## Deploy
 
 ### Azure
@@ -30,7 +35,7 @@ $ curl https://azf-send-sms.azurewebsites.net/ -d "{ "receivers": ["4745678912"]
 You"ll need a valid subscription and have the following resources setup:
 - resource group
 - app service plan
-- storage account
+- storage account with a blob storage (and a SAS URL)
 
 
 #### Setup function
@@ -45,7 +50,9 @@ Configuration for app (Application settings):
 {
   "PSWIN_USERNAME": "username",
   "PSWIN_PASSWORD": "password",
-  "DEFAULT_SENDER": "VTFK"
+  "DEFAULT_SENDER": "VTFK",
+  "API_HOSTNAME": "api.vtfk.no/sms/v2", // Override URL for the status endpoint, optional.
+  "StorageConnectionString": "Storage Queue connection string"
 }
 ```
 
@@ -66,7 +73,8 @@ Configuration for app (Application settings):
         "FUNCTIONS_WORKER_RUNTIME": "node",
         "PSWIN_USERNAME": "username",
         "PSWIN_PASSWORD": "password",
-        "DEFAULT_SENDER": "VTFK"
+        "DEFAULT_SENDER": "VTFK",
+        "StorageConnectionString": "Storage Queue connection string"
       }
     }
     ```
@@ -79,7 +87,7 @@ Configuration for app (Application settings):
 POST testdata
 
 ```
-$ curl http://localhost:7071/api/SendSMS -d "{ "receivers": ["+4745678912"], "message": "Do you read me?" }" -H "Content-Type: application/json" -v
+$ curl http://localhost:7071/api/sms -d "{ "receivers": ["+4745678912"], "message": "Do you read me?" }" -H "Content-Type: application/json" -v
 ```
 
 # License

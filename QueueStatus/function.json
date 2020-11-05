@@ -1,0 +1,24 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "sms/{correlationId:guid}",
+      "methods": [ "get" ]
+    },
+    {
+      "name": "storage",
+      "type": "blob",
+      "path": "sms/{correlationId}.json",
+      "connection": "StorageConnectionString",
+      "direction": "in"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
