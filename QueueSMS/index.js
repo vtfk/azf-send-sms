@@ -1,4 +1,5 @@
 const { v4: uuid } = require('uuid')
+const { API_HOSTNAME, WEBSITE_HOSTNAME } = require('../config')
 const { acceptedRes, errorRes } = require('../lib/http-result')
 const validateJson = require('../lib/validate-sms-json')
 
@@ -24,7 +25,7 @@ module.exports = async function (context, request) {
     context.log('info', ['queue', correlationId, 'receivers', data.receivers, 'queued'])
 
     // Build status URL and return 202
-    const hostname = process.env.API_HOSTNAME || `${process.env.WEBSITE_HOSTNAME}/api`
+    const hostname = API_HOSTNAME || `${WEBSITE_HOSTNAME}/api`
     const statusEndpoint = `https://${hostname}/sms/${correlationId}`
     context.res = acceptedRes(statusEndpoint, `SMS added to Queue! Status: ${statusEndpoint}`, correlationId, 5)
   } catch (error) {
